@@ -18,40 +18,40 @@ public class LevelViewManager : MonoBehaviour
     }
     void Update()
     {
-        SwitchView();
+        if (Input.GetKeyDown(KeyCode.E))
+            SwitchView();
     }
+
     public void SwitchView()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        switch (CurrentView.ViewType) 
         {
-            CurrentView = SetView(ViewType.View1);
+            case ViewType.UsualView:
+                CurrentView = SetView(ViewType.ParallelDimension);
+                break;
+            case ViewType.ParallelDimension:
+                CurrentView = SetView(ViewType.UsualView);
+                break;
+            default:
+                return;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            CurrentView = SetView(ViewType.View2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            CurrentView = SetView(ViewType.View3);
-        }
-        else
-            return;
-        CurrentView.ApplyView();
         if (OnViewSwitched != null)
             OnViewSwitched();
+
     }
+
     public View SetView(ViewType viewType)
     {
         switch (viewType) 
         {
-            case ViewType.View1:
-                return new Test_View1();
-            case ViewType.View2:
-                return new Test_View2();
-            case ViewType.View3:
-                return new Test_View3();
+            case ViewType.ParallelDimension:
+                return new ParallelDimension();
+            case ViewType.BurningLight:
+                return new BurningLight();
+            case ViewType.Masquerade:
+                return new Masquerade();
             default:
-                return new Test_View1();
+                return new UsualView();
         }
     }
 }

@@ -1,6 +1,7 @@
 public enum ViewType
 {
-    View1,
-    View2,
-    View3
+    UsualView,
+    ParallelDimension,
+    BurningLight,
+    Masquerade
 }

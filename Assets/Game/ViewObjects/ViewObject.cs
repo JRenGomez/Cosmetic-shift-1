@@ -5,8 +5,7 @@ using UnityEngine.UIElements;
 public class ViewObject : MonoBehaviour
 {
     LevelViewManager ViewManager { get; set; }
-    public ViewType TypeWhenActive { get; set; }
-    public SpriteRenderer ThisSpriteRenderer;
+    public ViewType TypeWhenActive;
     private void OnEnable()
     {
         LevelViewManager.OnViewSwitched += SwitchObjectState;
@@ -37,10 +36,6 @@ public class ViewObject : MonoBehaviour
         else
             DeactivateObject();
     }
-    public virtual void ActivateObject() 
-    { 
-    }
-    public virtual void DeactivateObject() 
-    {
-    }
+    public virtual void ActivateObject() { }
+    public virtual void DeactivateObject() { }
 }
