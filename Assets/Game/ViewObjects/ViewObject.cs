@@ -31,10 +31,19 @@ public class ViewObject : MonoBehaviour
     }
     public void SwitchObjectState()
     {
-        if (ViewManager.CurrentView.ViewType == TypeWhenActive)
-            ActivateObject();
-        else
-            DeactivateObject();
+        try
+        {
+            if (ViewManager.CurrentView.ViewType == TypeWhenActive)
+                ActivateObject();
+            else
+                DeactivateObject();
+        }
+        catch (Exception e)
+        {
+            ViewManager = SetViewManager();
+            SwitchObjectState();
+        }
+
     }
     public virtual void ActivateObject() { }
     public virtual void DeactivateObject() { }
