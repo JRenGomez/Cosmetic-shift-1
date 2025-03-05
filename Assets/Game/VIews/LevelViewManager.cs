@@ -8,39 +8,37 @@ public class LevelViewManager : MonoBehaviour
     }
     public ViewType InitialViewType;
     public View CurrentView;
+
+    public delegate void SwitchViewAction();
+    public static event SwitchViewAction OnViewSwitched;
     void Start()
     {
         CurrentView = SetView(InitialViewType);
+        OnViewSwitched();
     }
     void Update()
     {
-        SwitchViewToView1();
-        SwitchViewToView2();
-        SwitchViewToView3();
+        SwitchView();
     }
-    public void SwitchViewToView1()
+    public void SwitchView()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CurrentView = SetView(ViewType.View1);
-            CurrentView.ApplyView();
         }
-    }
-    public void SwitchViewToView2()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CurrentView = SetView(ViewType.View2);
-            CurrentView.ApplyView();
         }
-    }
-    public void SwitchViewToView3()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             CurrentView = SetView(ViewType.View3);
-            CurrentView.ApplyView();
         }
+        else
+            return;
+        CurrentView.ApplyView();
+        if (OnViewSwitched != null)
+            OnViewSwitched();
     }
     public View SetView(ViewType viewType)
     {

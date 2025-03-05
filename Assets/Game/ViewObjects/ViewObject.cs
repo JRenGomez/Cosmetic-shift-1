@@ -7,17 +7,16 @@ public class ViewObject : MonoBehaviour
     LevelViewManager ViewManager { get; set; }
     public ViewType TypeWhenActive { get; set; }
     public SpriteRenderer ThisSpriteRenderer;
+    private void OnEnable()
+    {
+        LevelViewManager.OnViewSwitched += SwitchObjectState;
+    }
     void Start()
     {
         ViewManager = SetViewManager();
     }
     void Update()
-    {
-        if (TypeWhenActive == ViewManager.CurrentView.ViewType)
-            ActivateObject();
-        else
-            DeactivateObject();
-    }
+    {}
     private LevelViewManager SetViewManager()
     {
         try
@@ -31,6 +30,17 @@ public class ViewObject : MonoBehaviour
             return null;
         }
     }
-    public virtual void ActivateObject() { }
-    public virtual void DeactivateObject() { }
+    public void SwitchObjectState()
+    {
+        if (ViewManager.CurrentView.ViewType == TypeWhenActive)
+            ActivateObject();
+        else
+            DeactivateObject();
+    }
+    public virtual void ActivateObject() 
+    { 
+    }
+    public virtual void DeactivateObject() 
+    {
+    }
 }
