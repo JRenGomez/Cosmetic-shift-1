@@ -19,7 +19,7 @@ public class playerController : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        // myAnimator = GetComponent<Animator>();
+        myAnim = GetComponent<Animator>();
         facingRight = true;
     }
 
@@ -27,6 +27,7 @@ public class playerController : MonoBehaviour
     {
         if (grounded && Input.GetAxis("Jump")>0) {
             grounded = false;
+            myAnim.SetBool("isGrounded", grounded);
             myRB.AddForce(new Vector2(0, jumpHeight));
 
         }
@@ -37,6 +38,8 @@ public class playerController : MonoBehaviour
     {
         //check if we are grounded - if no, then we are falling
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        myAnim.SetBool("isGrounded", grounded);
+        
         myAnim.SetFloat("verticalSpeed", myRB.velocity.y);
 
 
