@@ -30,6 +30,16 @@ public class playerController : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
         }
+
+        if(InputX > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if( InputX < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
