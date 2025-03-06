@@ -439,6 +439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 7831534301165402243, guid: 086e9ca128e63e940b971a24595ff314, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b717b0426f0b6794f86995c51fda6487, type: 2}
     - target: {fileID: 8111540425141688838, guid: 086e9ca128e63e940b971a24595ff314, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.78176415
@@ -478,6 +482,14 @@ PrefabInstance:
     - target: {fileID: 8111540425141688838, guid: 086e9ca128e63e940b971a24595ff314, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676441510529979054, guid: 086e9ca128e63e940b971a24595ff314, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836379942613323589, guid: 086e9ca128e63e940b971a24595ff314, type: 3}
+      propertyPath: jumpForce
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
