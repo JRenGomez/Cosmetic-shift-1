@@ -21,14 +21,14 @@ public class playerController : MonoBehaviour
     {
         InputX = Input.GetAxisRaw("Horizontal");
 
-        rb.velocity = new Vector2(InputX * speed, rb.velocity.y); 
+        rb.linearVelocity = new Vector2(InputX * speed, rb.linearVelocity.y); 
     }
 
     private void Update()
     {
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * jumpForce;
+            rb.linearVelocity = Vector2.up * jumpForce;
         }
 
         if(InputX > 0)
