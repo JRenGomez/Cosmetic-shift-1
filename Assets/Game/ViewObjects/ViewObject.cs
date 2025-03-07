@@ -4,31 +4,16 @@ using UnityEngine.UIElements;
 
 public class ViewObject : MonoBehaviour
 {
-    LevelViewManager ViewManager { get; set; }
+    public LevelViewManager ViewManager;
     public ViewType TypeWhenActive;
     private void OnEnable()
     {
         LevelViewManager.OnViewSwitched += SwitchObjectState;
     }
     void Start()
-    {
-        ViewManager = SetViewManager();
-    }
+    {}
     void Update()
     {}
-    private LevelViewManager SetViewManager()
-    {
-        try
-        {
-            LevelViewManager thisLevelViewManager = FindObjectOfType<LevelViewManager>();
-            return thisLevelViewManager;
-        }
-        catch(Exception e)
-        {
-            Debug.LogError(e.Message);
-            return null;
-        }
-    }
     public void SwitchObjectState()
     {
         try
@@ -40,7 +25,6 @@ public class ViewObject : MonoBehaviour
         }
         catch (Exception e)
         {
-            ViewManager = SetViewManager();
             SwitchObjectState();
         }
 
