@@ -8,5 +8,6 @@ public class ParallelDimension : View
     }
     public override void ApplyView()
     {
+        Debug.Log("Parallel Dimension view");
     }
 }

@@ -8,5 +8,6 @@ public class BurningLight : View
     }
     public override void ApplyView()
     {
+        Debug.Log("Burning light view");
     }
 }

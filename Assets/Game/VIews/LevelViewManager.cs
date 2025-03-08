@@ -19,6 +19,8 @@ public class LevelViewManager : MonoBehaviour
     void Update()
     {
         SwitchView(ViewType.ParallelDimension, KeyCode.J);
+        SwitchView(ViewType.BurningLight, KeyCode.K);
+        SwitchView(ViewType.Masquerade, KeyCode.L);
     }
 
     private void SwitchView(ViewType view, KeyCode keyCode)
@@ -31,6 +33,7 @@ public class LevelViewManager : MonoBehaviour
                 CurrentView = SetView(view);
             else
                 CurrentView = SetView(ViewType.UsualView);
+            CurrentView.ApplyView();
             OnViewSwitched();
         }
 

@@ -18,7 +18,9 @@ public class ViewObject : MonoBehaviour
     {
         try
         {
-            if (ViewManager.CurrentView.ViewType == TypeWhenActive)
+            if (ViewManager.CurrentView.ViewType == TypeWhenActive )
+                ActivateObject();
+            else if (TypeWhenActive == ViewType.UsualView && ViewManager.CurrentView.ViewType != ViewType.ParallelDimension)
                 ActivateObject();
             else
                 DeactivateObject();

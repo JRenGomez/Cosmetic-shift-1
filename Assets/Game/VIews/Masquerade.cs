@@ -8,5 +8,6 @@ public class Masquerade : View
     }
     public override void ApplyView()
     {
+        Debug.Log("Masquerade view");
     }
 }
