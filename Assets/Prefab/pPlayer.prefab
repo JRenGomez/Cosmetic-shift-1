@@ -148,12 +148,10 @@ MonoBehaviour:
   jumpForce: 5
   isGrounded: 0
   masks:
-  - {fileID: 11400000, guid: 105c0a9f1687b4b48977620a27953179, type: 2}
+  - {fileID: 11400000, guid: 146e7249067de1d4698c52ef9139f8ce, type: 2}
   - {fileID: 11400000, guid: 67dbe67873d933743a4632bba17d59e6, type: 2}
-  - {fileID: 11400000, guid: 39ccb5a5ea4d8184da20ebdd07f0817c, type: 2}
-  - {fileID: 11400000, guid: 2a277f18cf56a3946a8b40fcfeb1432c, type: 2}
   - {fileID: 11400000, guid: 186f302604acbf94db736eeed538dcfc, type: 2}
-  - {fileID: 11400000, guid: cb21548b9d442874e817edb60cf7b08b, type: 2}
+  - {fileID: 11400000, guid: 39ccb5a5ea4d8184da20ebdd07f0817c, type: 2}
   spawnPoint: {fileID: 3428450870844821185}
 --- !u!61 &2648672841972075902
 BoxCollider2D:

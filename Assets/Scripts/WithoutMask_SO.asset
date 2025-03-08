@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813f2cb420fdb5c4a86feef8beb7ec9b, type: 3}
   m_Name: WithoutMask_SO
   m_EditorClassIdentifier: 
-  itemName: Mask2
-  itemSprite: {fileID: -234736141812639884, guid: 26f8e0f2fa277104e84e2909d54daf77, type: 3}
+  itemName: NoMask
+  itemSprite: {fileID: 0}
