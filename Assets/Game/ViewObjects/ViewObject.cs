@@ -4,10 +4,11 @@ using UnityEngine.UIElements;
 
 public class ViewObject : MonoBehaviour
 {
-    public LevelViewManager ViewManager;
+    private LevelViewManager ViewManager;
     public ViewType TypeWhenActive;
     private void OnEnable()
     {
+        ViewManager = FindObjectOfType<LevelViewManager>();
         LevelViewManager.OnViewSwitched += SwitchObjectState;
     }
     void Start()
