@@ -6,6 +6,8 @@ using static UnityEditor.Progress;
 
 public class playerController : MonoBehaviour
 {
+
+    private LevelViewManager viewManager;
     //body/sptites
     private Rigidbody2D rb;
     public float speed;
@@ -20,6 +22,12 @@ public class playerController : MonoBehaviour
     public Transform spawnPoint; // Assign a spawn point in Unity
     private int currentIndex = 0;
     private GameObject currentItem;
+
+    private void OnEnable()
+    {
+        viewManager = FindObjectOfType<LevelViewManager>();
+        LevelViewManager.OnViewSwitched += SwitchMask;
+    }
 
     private void Start()
     {
@@ -64,13 +72,33 @@ public class playerController : MonoBehaviour
 
 
         //masks
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            CycleMasks();
-        }
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    CycleMasks();
+        //}
     }
 
-
+    public void SwitchMask()
+    {
+        switch (viewManager.CurrentView.ViewType)
+        {
+            case ViewType.UsualView:
+                currentIndex = 0;
+                break;
+            case ViewType.ParallelDimension:
+                currentIndex = 1;
+                break;
+            case ViewType.BurningLight:
+                currentIndex = 2;
+                break;
+            case ViewType.Masquerade:
+                currentIndex = 3;
+                break;
+            default:
+                return;
+        }
+        CycleMasks();
+    }
     void CycleMasks()
     {
         if (masks.Length == 0) return;
@@ -95,21 +123,17 @@ public class playerController : MonoBehaviour
 
         // Scale down the mask by a factor of 2
         currentItem.transform.localScale = new Vector3(0.3f, 0.3f, 1); // Shrink by half
-
-        currentIndex = (currentIndex + 1) % masks.Length;
     }
-        private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = true;
         print("Grouneded");
-
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         isGrounded = false;
         print("Not Grouneded");
-
     }
 }
 
