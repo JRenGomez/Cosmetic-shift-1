@@ -16,7 +16,7 @@ public class playerController : MonoBehaviour
     [SerializeField]
     bool isGrounded;
 
-    public mask_SO[] masks; // Array of ScriptableObjects
+    public mask_SO[] masks; // Array of SO masks
     public Transform spawnPoint; // Assign a spawn point in Unity
     private int currentIndex = 0;
     private GameObject currentItem;
@@ -31,7 +31,7 @@ public class playerController : MonoBehaviour
         InputX = Input.GetAxisRaw("Horizontal");
 
         // Movement should apply to the master object (pPlayer)
-        rb.velocity = new Vector2(InputX * speed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(InputX * speed, rb.linearVelocity.y);
 
         // Rotate child object (PlayerPrefab) for direction change
         Transform playerVisual = transform.Find("PlayerPrefab");
@@ -50,7 +50,7 @@ public class playerController : MonoBehaviour
     {
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * jumpForce;
+            rb.linearVelocity = Vector2.up * jumpForce;
         }
 
         if (InputX > 0)
