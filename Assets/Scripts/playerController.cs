@@ -29,7 +29,6 @@ public class playerController : MonoBehaviour
     private void FixedUpdate()
     {
         InputX = Input.GetAxisRaw("Horizontal");
-
         // Movement should apply to the master object (pPlayer)
         rb.linearVelocity = new Vector2(InputX * speed, rb.linearVelocity.y);
 
