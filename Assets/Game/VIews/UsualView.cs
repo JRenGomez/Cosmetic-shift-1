@@ -9,5 +9,6 @@ public class UsualView : View
     }
     public override void ApplyView()
     {
+        Debug.Log("Usual view");
     }
 }

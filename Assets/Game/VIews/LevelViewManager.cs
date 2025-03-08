@@ -18,25 +18,24 @@ public class LevelViewManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            SwitchView();
+        SwitchView(ViewType.ParallelDimension, KeyCode.J);
+        SwitchView(ViewType.BurningLight, KeyCode.K);
+        SwitchView(ViewType.Masquerade, KeyCode.L);
     }
 
-    public void SwitchView()
+    private void SwitchView(ViewType view, KeyCode keyCode)
     {
-        switch (CurrentView.ViewType) 
+        if (OnViewSwitched == null)
+            return;
+        if (Input.GetKeyDown(keyCode))
         {
-            case ViewType.UsualView:
-                CurrentView = SetView(ViewType.ParallelDimension);
-                break;
-            case ViewType.ParallelDimension:
+            if (CurrentView.ViewType != view)
+                CurrentView = SetView(view);
+            else
                 CurrentView = SetView(ViewType.UsualView);
-                break;
-            default:
-                return;
-        }
-        if (OnViewSwitched != null)
+            CurrentView.ApplyView();
             OnViewSwitched();
+        }
 
     }
 

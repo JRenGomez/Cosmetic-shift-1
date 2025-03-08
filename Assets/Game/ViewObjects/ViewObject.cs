@@ -4,43 +4,30 @@ using UnityEngine.UIElements;
 
 public class ViewObject : MonoBehaviour
 {
-    LevelViewManager ViewManager { get; set; }
+    private LevelViewManager ViewManager;
     public ViewType TypeWhenActive;
     private void OnEnable()
     {
+        ViewManager = FindObjectOfType<LevelViewManager>();
         LevelViewManager.OnViewSwitched += SwitchObjectState;
     }
     void Start()
-    {
-        ViewManager = SetViewManager();
-    }
+    {}
     void Update()
     {}
-    private LevelViewManager SetViewManager()
-    {
-        try
-        {
-            LevelViewManager thisLevelViewManager = FindObjectOfType<LevelViewManager>();
-            return thisLevelViewManager;
-        }
-        catch(Exception e)
-        {
-            Debug.LogError(e.Message);
-            return null;
-        }
-    }
     public void SwitchObjectState()
     {
         try
         {
-            if (ViewManager.CurrentView.ViewType == TypeWhenActive)
+            if (ViewManager.CurrentView.ViewType == TypeWhenActive )
+                ActivateObject();
+            else if (TypeWhenActive == ViewType.UsualView && ViewManager.CurrentView.ViewType != ViewType.ParallelDimension)
                 ActivateObject();
             else
                 DeactivateObject();
         }
         catch (Exception e)
         {
-            ViewManager = SetViewManager();
             SwitchObjectState();
         }
 
